@@ -1,12 +1,15 @@
 from datetime import date
 from flask import Flask, render_template, request
+from flask_cors.decorator import cross_origin
 from prediction import predictTheSeverity
 import pandas as pd
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/checkForSeverity")
+@cross_origin()
 def homePage():
     requestData = request.json
     df = predictTheSeverity(requestData)
