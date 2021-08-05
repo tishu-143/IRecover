@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-def predictTheSeverity():
+def predictTheSeverity(requestData):
     ## import the dataset
     data = pd.read_csv('Covid_Dataset.csv')
 
@@ -42,6 +42,7 @@ def predictTheSeverity():
 
 
     ################# predict the output
-    #test_data = pd.json_normalize(test_set)
-    return X.head(1)
+    
+    test_data = pd.json_normalize(requestData)
+    return lr.predict(test_data)
 
